@@ -1,17 +1,3 @@
-class fecha:
- def __init__(self, día, mes, año):
-   self.día = día
-   self.mes = mes
-   self.año = año
-
-def __srt__(self):
- return f"[self.día]/[self.mes]/[self.año]"
-
-def __eq__(self, otra_fecha):
-   return (self.día == otra_fecha.día and
-           self.mes == otra_fecha.mes and
-           self.año == otra_fecha.año)
-
 class alumno:
   def __init__(self, nombre, dni, fecha_ingreso, carrera):
      self.nombre = nombre
