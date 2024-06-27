@@ -24,7 +24,4 @@ def __iter__(self):
 def __next__(self):
    if self.actual is None:
       raise stopiteracion
-   else:
-       dato = self.actual.dato
-       self.actual = self.actual.siguiente
        return dato
