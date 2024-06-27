@@ -3,21 +3,23 @@
 directorio = "directorio_alumnos"
 if not os.path.exists(directorio):
     os.mkdir(directorio)
-    
-# Creación de lista y guardar
 
-lista_alumnos = ListaDoblementeEnlazada()
-lista_alumnos.lista_ejemplo()
-archivo_alumnos = os.path(directorio, "lista_alumnos")
-guardar_lista_en_archivo(lista_alumnos, archivo_alumnos)
+def guardar_lista_en_archivo(lista,archivo):
+    with open(archivo, "w") as file: 
+         json.dump([alumno.datos for alumno in lista], file, default=str)
+       
 
-# Mover el directorio a una nueva ruta
+def mover_directorio(origen, destino):
+    try:
+        os.rename(origen, destino)
+    except Exception as e:
+        print(f"Error al mover el directorio: {e}")
 
-nueva_ruta = "nueva_ruta_alumnos"
-mover_directorio(directorio, nueva_ruta)
-
-# Borrar el archivo y el directorio en la nueva ruta
-
-nuevo_archivo_alumnos = os.path(nueva_ruta, "lista_alumnos")
-borrar_archivo_y_directorio(nuevo_archivo_alumnos, nueva_ruta)
-
+def borrar_archivo_y_directorio(archivo, directorio):
+    try:
+        if os.path.exists(archivo):
+            os.remove(archivo)
+        if os.path.exists(directorio):
+            os.rmdir(directorio)
+    except Exception as e:
+        print(f"Error al borrar el archivo o directorio: {e}")
